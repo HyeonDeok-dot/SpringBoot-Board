@@ -18,5 +18,10 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardDto> selectBoardList() throws Exception {
 		return boardMapper.selectBoardList(); //게시글목록 조회
 	}
+	
+	@Override
+	public void insertBoard(BoardDto board) throws Exception {
+		boardMapper.insertBoard(board); //게시글 등록
+	}
 }	
 

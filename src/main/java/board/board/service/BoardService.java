@@ -6,6 +6,8 @@ import board.board.dto.BoardDto;
 
 public interface BoardService {
 	
-	List<BoardDto> selectBoardList() throws Exception;
+	List<BoardDto> selectBoardList() throws Exception; //게시글 목록
+	
+	void insertBoard(BoardDto board) throws Exception; //게시글 작성
 	
 }

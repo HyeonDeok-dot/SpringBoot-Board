@@ -17,7 +17,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-//	게시판글목록
+//	게시판 글목록
 	@RequestMapping("/board/openBoardList.do")
 	public ModelAndView openBoardList() throws Exception {
 		ModelAndView mv = new ModelAndView("/board/boardList");
@@ -26,6 +26,19 @@ public class BoardController {
 		mv.addObject("list", list);
 		
 		return mv;
+	}
+	
+//	게시글 작성 화면 호출
+	@RequestMapping("/board/openBoardWrite.do")
+	public String openBoardWrite() throws Exception {
+		return "/board/boardWrite";
+	}
+	
+//	게시글 등록
+	@RequestMapping("/board/insertBoard.do")
+	public String insertBoard(BoardDto board) throws Exception {
+		boardService.insertBoard(board);
+		return "redirect:/board/openBoardList.do";
 	}
 
 }
