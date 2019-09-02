@@ -10,4 +10,6 @@ public interface BoardService {
 	
 	void insertBoard(BoardDto board) throws Exception; //게시글 작성
 	
+	BoardDto selectBoardDetail(int boardIdx) throws Exception;
+	
 }
