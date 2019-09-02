@@ -16,4 +16,9 @@ public interface BoardMapper {
 	
 	BoardDto selectBoardDetail(int boardIdx) throws Exception; //게시글 조회
 	
+	void updateBoard(BoardDto board) throws Exception; //게시글 수정
+	
+	void deleteBoard(int boardIdx) throws Exception; //게시글 삭제
+	
+	
 }
