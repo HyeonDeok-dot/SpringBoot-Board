@@ -1,5 +1,7 @@
 package board.board.dto;
 
+import java.util.List;
+
 import lombok.Data;
 
 //롬복을 활용하여 getter, setter를 자동으로 만들어주게 함
@@ -21,4 +23,6 @@ public class BoardDto {
 	private String updaterId;
 	
 	private String updatedDatetime;
+	
+	private List<BoardFileDto> fileList;
 }

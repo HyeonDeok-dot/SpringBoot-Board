@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.ModelAndView;
 
-@ControllerAdvice //예외처리 클래스임을 나타내는 어노테이션
+//@ControllerAdvice //예외처리 클래스임을 나타내는 어노테이션
 @Slf4j
 public class ExceptionHandler {
 	
