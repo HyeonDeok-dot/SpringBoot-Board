@@ -5,6 +5,8 @@ import board.board.service.BoardService;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +17,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller 
 public class BoardController {
 	
+	private Logger log = LoggerFactory.getLogger(this.getClass()); //클래스 객체를 넘기면 "패키지이름+클래스이름"으로 인스턴스를 반환하게 로거 생성
+	
 	@Autowired
 	private BoardService boardService;
 	
 //	게시판 글목록
 	@RequestMapping("/board/openBoardList.do")
 	public ModelAndView openBoardList() throws Exception {
+		log.debug("openBoardList"); //debug레벨의 로그를 출력
 		ModelAndView mv = new ModelAndView("/board/boardList");
 		
 		List<BoardDto> list = boardService.selectBoardList();
