@@ -13,16 +13,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import board.board.dto.BoardFileDto;
+import board.board.entity.BoardFileEntity;
 
 @Component //스프링 빈으로 등록
 public class FileUtils {
 	
-	public List<BoardFileDto> parseFileInfo(int boardIdx, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
+	public List<BoardFileEntity> parseFileInfo(MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
 		if(ObjectUtils.isEmpty(multipartHttpServletRequest)){
 			return null;
 		}
 		
-		List<BoardFileDto> fileList = new ArrayList<>();
+		List<BoardFileEntity> fileList = new ArrayList<>();
 		
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd"); 
     	ZonedDateTime current = ZonedDateTime.now(); //jdk1.8부터 사용가능한 오늘의 날짜 확인 라이브러리
@@ -60,11 +61,11 @@ public class FileUtils {
 					}
 					
 					newFileName = Long.toString(System.nanoTime()) + originalFileExtension; //서버에 저장될 파일 이름 생성
-					BoardFileDto boardFile = new BoardFileDto();
-					boardFile.setBoardIdx(boardIdx);
+					BoardFileEntity boardFile = new BoardFileEntity();
 					boardFile.setFileSize(multipartFile.getSize());
 					boardFile.setOriginalFileName(multipartFile.getOriginalFilename());
 					boardFile.setStoredFilePath(path + "/" + newFileName);
+					boardFile.setCreatorId("admin");
 					fileList.add(boardFile);
 					
 					file = new File(path + "/" + newFileName); //업로드된 파일을 새로운 이름으로 바꿈

@@ -32,11 +32,11 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public void insertBoard(BoardDto board, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
-		boardMapper.insertBoard(board); //게시글 번호를 이용하기위해 먼저 게시글 등록
-		List<BoardFileDto> list = fileUtils.parseFileInfo(board.getBoardIdx(), multipartHttpServletRequest); //업로드된 파일을 서버에 저장하고 파일정보 가져옴
-		if(CollectionUtils.isEmpty(list) == false){
-			boardMapper.insertBoardFileList(list);		 //파일의 정보를 맵에 저장	
-		}
+//		boardMapper.insertBoard(board); //게시글 번호를 이용하기위해 먼저 게시글 등록
+//		List<BoardFileDto> list = fileUtils.parseFileInfo(board.getBoardIdx(), multipartHttpServletRequest); //업로드된 파일을 서버에 저장하고 파일정보 가져옴
+//		if(CollectionUtils.isEmpty(list) == false){
+//			boardMapper.insertBoardFileList(list);		 //파일의 정보를 맵에 저장	
+//		}
 	}
 	
 	@Override

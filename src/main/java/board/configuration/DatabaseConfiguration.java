@@ -1,5 +1,7 @@
 package board.configuration;
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -62,5 +64,10 @@ public class DatabaseConfiguration {
 	@Bean
 	public PlatformTransactionManager transactionManager() throws Exception {
 		return new DataSourceTransactionManager(dataSource()); //트랙잭션 메니저 등록
+	}
+	
+	@ConfigurationProperties(prefix="spring.jpa") //application.properties의 jpa설정을 빈으로 등록
+	public Properties hibernateConfig() {
+		return new Properties();
 	}
 }
